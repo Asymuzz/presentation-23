@@ -1,0 +1,130 @@
+body {
+  font-family: 'Gill Sans', sans-serif;
+  margin: auto;
+  padding: auto;
+  background-color: #f4f4f4; /* Light background color */
+  color: #333333; /* Text color */
+  padding-top: 60px; /* Add padding to the top of the page to prevent buttons from blocking text */
+}
+
+#presentation {
+  display: block;
+  width: auto;
+  overflow: hidden;
+  margin: 20px;
+}
+
+#current-chapter {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 1.5s;
+
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+#slide-number, .titles {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  z-index: 1; /* Ensure it's above other content */
+}
+
+.titles {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  overflow: hidden;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 0;
+  z-index: 1;
+  transition: opacity 1.5s; /* Fade-out transition */
+  opacity: 0;
+}
+
+.titles.fade-out {
+  opacity: 0; /* Make it completely transparent during fade-out */
+}
+
+.titles::before {
+  content: attr(data-chapter-title);
+}
+
+.titles [data-chapter-title] {
+  display: none; /* Hide chapter titles by default */
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+strong {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  z-index: 2; /* Ensure it's above the titles */
+}
+
+strong.fade-out {
+  opacity: 0;
+  transition: 5s;
+}
+
+
+/*----------------------------------------------------------------------------------------------------------------------*/
+section {
+  display: none;
+  font-size: 3rem;
+  color: #222222; /* Heading color */
+}
+
+section.active {
+  display: block;
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+#previousSlide, #nextSlide, #restart {
+  display: inline-block;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #222222; /* Button background color */
+  color: white; /* Button text color */
+}
+/*----------------------------------------------------------------------------------------------------------------------*/
+#tools {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr; 
+  grid-gap: 10px; 
+  justify-content: start; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  background-color: #f4f4f4;
+  z-index: 1;
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+#tools:hover {
+  opacity: 1;
+}
+
+#previousSlide:hover, #nextSlide:hover, #restart:hover {
+  opacity: 1;
+  background-color: #52CC7A;
+}
